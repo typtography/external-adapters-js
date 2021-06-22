@@ -14,8 +14,9 @@ const referenceSymbolToUuid = async (symbol: string, config: Config): Promise<st
     'x-access-token': util.getRandomRequiredEnv('API_KEY'),
   }
   const options = {
+    baseUrl: config.api.baseURL,
     url,
-    headers,
+    headers
   }
 
   const response = await Requester.request(options)

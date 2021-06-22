@@ -3,7 +3,7 @@ import { Config } from '@chainlink/types'
 
 export const NAME = 'COINCODEX'
 
-export const DEFAULT_BASE_URL = 'https://coincodex.com/api/coincodex/get_coin/'
+export const DEFAULT_BASE_URL = 'https://coincodex.com/api/coincodex/'
 
 export const makeConfig = (prefix?: string): Config => {
   const config = Requester.getDefaultConfig(prefix, true)

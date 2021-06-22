@@ -1,7 +1,7 @@
 import { Requester } from '@chainlink/ea-bootstrap'
 import { Config } from '@chainlink/types'
 
-export const NAME = 'Coinranking'
+export const NAME = 'COINRANKING'
 
 export const DEFAULT_BASE_URL = 'https://api.coinranking.com/v2'
 
