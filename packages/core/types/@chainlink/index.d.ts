@@ -107,7 +107,7 @@ declare module '@chainlink/types' {
   export type ExecuteSync = (input: AdapterRequest, callback: Callback) => void
 
   export type Execute = (input: AdapterRequest) => Promise<AdapterResponse>
-  export type ExecuteCallback = (request: any) => Promise<CallbackApiResponse>
+  export type ExecuteCallback = (request: any, reqData: any) => Promise<CallbackApiResponse>
 
   export type ExecuteWithConfig<C extends Config> = (
     input: AdapterRequest,
