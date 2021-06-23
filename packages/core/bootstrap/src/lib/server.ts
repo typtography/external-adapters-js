@@ -84,11 +84,18 @@ function setupCallbackServer(callbackFunctions: CallbackProperty[]) {
 
 function registerCallbackFunction(callbackServer: any, callbackProperties: CallbackProperty) {
   const { method, handler, endpoint = "/" } = callbackProperties
+  const endpointHandler = async (req: any, res: any, reqData: any) => {
+    const { statusCode, data } = await handler(req, reqData)
+    res.status(statusCode).send(data)
+  }
   switch (method) {
+    case "PATCH":
+      callbackServer.patch(endpoint, (req: any, res: any) => endpointHandler(req, res, res.body))
+      break
     case "POST":
-      callbackServer.post(endpoint, handler)
+      callbackServer.post(endpoint, (req: any, res: any) => endpointHandler(req, res, res.body))
       break
     default:
-      callbackServer.get(endpoint, handler)
+      callbackServer.get(endpoint, (req: any, res: any) => endpointHandler(req, res, res.params))
   }
 }
